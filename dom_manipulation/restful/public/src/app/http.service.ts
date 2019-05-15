@@ -14,4 +14,11 @@ export class HttpService {
     return this._http.get( '/tasks' ) ;
   }
 
+  getOneTask(taskId: string) {
+    return this._http.get( `/tasks/${taskId}`);
+  }
+
+  postToServer( num: object ) {
+    return this._http.post( '/tasks', num );
+  }
 }

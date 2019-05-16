@@ -1,0 +1,61 @@
+<div class="container">
+
+  Submitted: {{submitted}}
+  <br>
+  Model: {{diagnostic}}
+
+  <div [hidden]="submitted">
+
+    <h1>Hero Form</h1>
+
+    <form #heroForm="ngForm">
+      <div class="form-group">
+
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" #spy>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="alterEgo">Alter Ego</label>
+        <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo">
+      </div>
+
+      <div class="form-group">
+        <label for="power">Hero Power</label>
+        <select id="power" class="form-control" required [(ngModel)]="model.power" name="power">
+          <option value=""></option>
+          <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset(); onSubmit()" [disabled]="!heroForm.form.valid">New Hero</button>
+
+    </form>
+  </div>
+
+  <div [hidden]="!submitted">
+
+    <h2>You submitted the following:</h2>
+
+    <div class="row">
+      <div class="col">Nane</div>
+      <div class="col">{{model.name}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col">Alter Ego</div>
+      <div class="col">{{model.alterEgo}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col">Power</div>
+      <div class="col">{{model.power}}</div>
+    </div>
+
+    <br>
+
+    <button (click)="submitted=false">Edit</button>
+
+  </div>
+</div>

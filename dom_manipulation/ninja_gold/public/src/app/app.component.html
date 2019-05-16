@@ -12,19 +12,9 @@
     <div class="header"></div>
 
     <div class="main">
-      <div class="game" *ngIf="user.username.length > 2">user logged in</div>
-      <div *ngIf="user.username.length < 3">User not logged in
 
-        <div class="login">
-          <h1 class="login__title">Log In to Play</h1>
-          <p>{{user|json}}</p>
-          <form class="login__form">
-            <p class="login__item">Username: <input type="text" name="username" id="username" class="login__input"></p>
-            <p class="login__item">PIN: <input type="number" name="pin" id="pin" class="login__input"></p>
-            <button type="submit" class="login__submit submit" (click)="register()">Log In</button>
-          </form>
-        </div>
-      </div>
+      <app-login></app-login>
+
     </div>
 
     <div class="footer"></div>

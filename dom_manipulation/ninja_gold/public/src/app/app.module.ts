@@ -4,10 +4,14 @@ import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { UserRegComponent } from './user-reg/user-reg.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserRegComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

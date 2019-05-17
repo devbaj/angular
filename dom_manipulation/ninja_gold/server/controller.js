@@ -50,6 +50,13 @@ module.exports = {
 	},
 
 	saveGame: ( req , res ) => {
+		console.log( 'save game route' );
 		console.log( req.body );
+		User.findByIdAndUpdate( req.body.userid, { $push: { games: { gold: req.body.gold, turnNumber: req.body.turns, isOver: req.body.isOver, turnLog: req.body.activityLog} } } )
+		.then( data => {
+			console.log( 'USER INFO' , data );
+		})
+		.catch ( err => console.log('error:' , err));
+		res.json({message: 'success'});
 	}
 }

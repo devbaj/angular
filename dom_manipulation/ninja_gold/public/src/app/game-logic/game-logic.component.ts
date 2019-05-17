@@ -31,7 +31,8 @@ export class GameLogicComponent implements OnInit {
     const change = this.generateChange( location[`max`] , location[`min`]);
     this._gamedataService.game.gold += change;
     this._gamedataService.game.turns += 1;
-    const turnData = new Turn( location[`name`], change );
+    let turnData = new Turn( location[`name`], change );
+    console.log('turn data' , turnData);
     this._gamedataService.game.activityLog.push( turnData );
     this.turnHistory = this._gamedataService.game.activityLog;
     if (this._gamedataService.game.turns >= this.maxTurns ) {

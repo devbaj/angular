@@ -1,5 +1,6 @@
 const mongoose = require( 'mongoose' );
 mongoose.connect( 'mongodb://localhost/ninja_gold' , { useNewUrlParser: true } );
+mongoose.set('useFindAndModify',false);
 
 TurnSchema = new mongoose.Schema( {
 	location: { type: String , required: true } ,

@@ -27,8 +27,8 @@ export class HttpService {
   }
 
   saveGame( game: Game ) {
-    console.log ( 'SAVE GAME REQUEST SENT');
-    this._http.post( 'game/save' , game );
+    console.log ( 'SAVE GAME REQUEST SENT' );
+    return this._http.post( '/records/save' , game );
   }
 
 }

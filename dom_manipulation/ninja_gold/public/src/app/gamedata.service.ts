@@ -58,7 +58,9 @@ export class GamedataService {
 
   saveGame(game: Game) {
     console.log( 'DATA SERVICE SAVE' );
-    this._httpService.saveGame(game);
+    console.log.( 'userid' , this.userid );
+    let observable = this._httpService.saveGame(game);
+    observable.subscribe( data => console.log( 'saved' , data ) );
   }
 
   endGame(game: Game) {

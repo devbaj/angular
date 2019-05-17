@@ -28,7 +28,8 @@ export class HeroFormComponent implements OnInit {
 
   newHero() {
     console.log(this.model);
-    this.model = new Hero(42, '', '');
+    this.model = new Hero( '', '');
+    addUserToDB(this.model);
   }
 
 }

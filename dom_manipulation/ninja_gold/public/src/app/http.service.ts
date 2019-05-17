@@ -1,3 +1,5 @@
+import { Game } from './game';
+import { User } from './user';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,4 +9,26 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor( private _http: HttpClient ) { }
+
+
+
+
+  getAllUsers() {
+    return this._http.get('/users/all');
+
+  }
+
+  addUser( newUser: User ) {
+    return this._http.put( '/users/new', newUser );
+  }
+
+  loginUser( attempt: User ) {
+    return this._http.post( '/users/login' , attempt );
+  }
+
+  saveGame( game: Game ) {
+    console.log ( 'SAVE GAME REQUEST SENT');
+    this._http.post( 'game/save' , game );
+  }
+
 }

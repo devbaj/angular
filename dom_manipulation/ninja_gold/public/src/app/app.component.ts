@@ -1,5 +1,8 @@
+import { GamedataService } from './gamedata.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { User } from './user';
+import { Game } from './game';
 
 @Component({
   selector: 'app-root',
@@ -8,43 +11,30 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'Ninja Gold';
-  user: object;
-  game: object;
+  user: User;
   locations: object;
+  userNameList: [];
+  game: Game;
 
-  constructor( private _httpService: HttpService ) {}
+  constructor(
+    private _httpService: HttpService,
+    private _gamedataService: GamedataService
+    ) {}
 
   ngOnInit() {
-    console.log('Angular app init')
-    this.user = {
-      username: '',
-      pin: 0,
-    };
-    console.log( 'USER' , this.user);
-    this.game = {};
-    this.locations = {
-      cave: {
-        min: 5,
-        max: 20
-      },
-      farm: {
-        min: 3,
-        max: 10
-      },
-      house: {
-        min: 0,
-        max: 5
-      },
-      casino: {
-        min: -50,
-        max: 50
-      }
-    };
-    console.log( 'LOCATIONS' , this.locations )
+    console.log('Angular app init');
   }
 
-
-  register() {
-
+  getUserList() {
+    const observable = this._httpService.getAllUsers();
+    observable.subscribe(data => {
+      this.userNameList = data[`users`];
+      console.log(this.userNameList);
+  } );
   }
+
+  logInUser( user: User ) {
+    this.user = user;
+  }
+
 }

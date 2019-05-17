@@ -4,9 +4,12 @@ mongoose.connect( 'mongodb://localhost/ninja_gold' , { useNewUrlParser: true } )
 TurnSchema = new mongoose.Schema( {
 	location: { type: String , required: true } ,
 	goldChange: { type: Number , required: true } ,
-} , {
-	timestamps : true
-} )
+} , 
+// ? do I want to track timestamps? I would need to update the turn database every time the user takes a turn. I think it's fine to just track timestamps on game saves.
+// {
+	// timestamps : true
+// } 
+)
 
 GameSchema = new mongoose.Schema( {
 	turnNumber: { type: Number , default: 0 } ,

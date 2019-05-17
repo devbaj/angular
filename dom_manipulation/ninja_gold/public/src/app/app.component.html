@@ -13,7 +13,11 @@
 
     <div class="main">
 
-      <app-login></app-login>
+      <button [routerLink]="['/users']">Register</button>
+      <button [routerLink]="['/login']">Log In</button>
+      <button [routerLink]="['/game']">New Game</button>
+
+      <router-outlet></router-outlet>
 
     </div>
 

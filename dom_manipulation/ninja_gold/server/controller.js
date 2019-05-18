@@ -51,25 +51,37 @@ module.exports = {
 	saveGame: ( req , res ) => {
 		// todo : check if game already exists and update if it does; otherwise write new game
 		console.log( 'looking up game:' , req.body);
-		if ( '_id' in req.body ) {
-			// User.findOneAndUpdate( {'games._id': req.body._id} , {})
+		if ( 'gameid' in req.body ) {
 			console.log( ' game is in db ')
+			User.findOneAndUpdate( {'games._id': req.body.gameid} , {$set: { 'games.$.gold': req.body.gold , 'games.$.turnNumber': req.body.turns, 'games.$.isOver': req.body.isOver, 'games.$.turnLog': req.body.actvityLog} } )
+			.then( data => {
+				console.log('game overwritten' , data);
+			})
+			.catch( err => {
+				console.log( 'could not overwrite game' , err);
+			})
 			// * game already exists in db
 		} else {
-			// * game has never been saved before
 			console.log('game not in db')
+			User.findByIdAndUpdate( req.body.userid, { $push: { games: { gold: req.body.gold, turnNumber: req.body.turns, isOver: req.body.isOver, turnLog: req.body.activityLog} } } )// * game has never been saved before
+			.then( data => {
+				console.log('new game save initiated', data);
+			})
+			.catch( err => {
+				console.log('could not add game' , err);
+			})
 		}
-		User.findOneAndUpdate( {'games._id' : req.body._id} , {$set: { 'games.$.gold': req.body.gold , 'games.$.turnNumber': req.body.turns, 'games.$.isOver': req.body.isOver, 'games.$.turnLog': req.body.actvityLog} } )
-		.then( data => {
-			if (data === null) {
-				User.findByIdAndUpdate()
-			} else {
+		// User.findOneAndUpdate( {'games._id' : req.body._id} , {$set: { 'games.$.gold': req.body.gold , 'games.$.turnNumber': req.body.turns, 'games.$.isOver': req.body.isOver, 'games.$.turnLog': req.body.actvityLog} } )
+		// .then( data => {
+		// 	if (data === null) {
+		// 		User.findByIdAndUpdate()
+		// 	} else {
 
-			}
-		})
-		.catch( err => {
-			console.log( 'error finding game' , err );
-		})
+		// 	}
+		// })
+		// .catch( err => {
+		// 	console.log( 'error finding game' , err );
+		// })
 		// User.findByIdAndUpdate( req.body.userid, { $push: { games: { gold: req.body.gold, turnNumber: req.body.turns, isOver: req.body.isOver, turnLog: req.body.activityLog} } } )
 		// .then( data => {
 			// console.log( 'USER INFO' , data );

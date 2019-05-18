@@ -29,7 +29,7 @@ export class GameLogicComponent implements OnInit, OnDestroy {
     console.log('game logic component init');
     this.sub = this._activatedRoute.params.subscribe ( params =>{
       console.log( 'load game params' , params );
-      if (params.gameid) {
+      if ( `gameid` in params ) {
         console.log ( 'found params' );
         this.resumeGame(params.gameid);
       } else {
@@ -70,7 +70,7 @@ export class GameLogicComponent implements OnInit, OnDestroy {
     console.log ( 'resume game' , gameid);
     var game = this._gamedataService.loadGameState(gameid);
     this.gold = game.gold;
-    this.turnHistory = game.turnLog;
+    this.turnHistory = game.activityLog;
     this.over = game.isOver;
   }
 

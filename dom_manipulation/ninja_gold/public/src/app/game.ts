@@ -4,6 +4,7 @@ export class Game {
   turns: number;
   isOver: boolean;
   activityLog: any;
+  gameid?: string;
 
   constructor(
     public userid: string,
@@ -15,6 +16,13 @@ export class Game {
     this.activityLog = [];
   }
 
-
+  resume(gameData: any): Game{
+    this.gold = gameData[`gold`];
+    this.turns = gameData[`turnNumber`];
+    this.isOver = gameData[`isOver`];
+    this.activityLog = gameData[`turnLog`];
+    this.gameid = gameData[`_id`];
+    return this;
+  }
 
 }

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class GamedataService {
   userid: string;
   username: string;
-  game?: any;
+  game?: Game;
   listOfGames: any;
   locations: object;
   loggedIn: boolean;
@@ -80,7 +80,7 @@ export class GamedataService {
     for ( let game of this.listOfGames ) {
       if ( game._id === gameid) {
         console.log( 'found matching game', game );
-        this.game = game;
+        this.game = this.game.resume(game);
       }
       console.log('in checker loop');
     }

@@ -2,16 +2,13 @@ const mongoose = require( 'mongoose' );
 mongoose.connect( 'mongodb://localhost/ninja_gold' , { useNewUrlParser: true } );
 mongoose.set('useFindAndModify',false);
 
+// * Turns hold only the data necessary for Angular to render the activity log
 TurnSchema = new mongoose.Schema( {
 	location: { type: String , required: true } ,
 	goldChange: { type: Number , required: true } ,
-} , 
-// ? do I want to track timestamps? I would need to update the turn database every time the user takes a turn. I think it's fine to just track timestamps on game saves.
-// {
-	// timestamps : true
-// } 
-)
+} );
 
+// * Games hold on to a snapshot of the user's gamestate when they save, with all information needed to allow users to resume or review a game
 GameSchema = new mongoose.Schema( {
 	turnNumber: { type: Number , default: 0 } ,
 	gold: { type: Number , default: 0 },
@@ -20,8 +17,8 @@ GameSchema = new mongoose.Schema( {
 } , {
 	timestamps: true
 } )
-var Game = mongoose.model( 'Game' , GameSchema );
 
+// * Users hold basic user info as well as an array of all their games, so that we can look up all games associated with a specific user
 UserSchema = new mongoose.Schema( {
 	username: {
 		type : String,
@@ -41,7 +38,5 @@ UserSchema = new mongoose.Schema( {
 } )
 var User = mongoose.model( 'User' , UserSchema );
 
-module.exports = {
-	Game: Game ,
-	User: User
-}
+// * we only need to export User because Users already contain Games and Games contain Turns
+module.exports = User;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 import { User } from './user';
 import { Game } from './game';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,18 @@ import { Game } from './game';
 })
 export class AppComponent implements OnInit {
   title = 'Ninja Gold';
-  user: User;
-  locations: object;
+  userid?: string;
+  loggedIn: boolean;
   userNameList: [];
-  game: Game;
 
   constructor(
     private _httpService: HttpService,
-    private _gamedataService: GamedataService
-    ) {}
+    private _gamedataService: GamedataService,
+    private _router: Router
+
+    ) {
+      this.loggedIn = false;
+    }
 
   ngOnInit() {
     console.log('Angular app init');
@@ -33,8 +37,16 @@ export class AppComponent implements OnInit {
   } );
   }
 
-  logInUser( user: User ) {
-    this.user = user;
+  setUser(userid: string) {
+    this.userid = userid;
+    this.loggedIn = true;
+    this._router.navigate(['/game']);
+  }
+
+  logOut(){
+    this.userid = null;
+    this.loggedIn = false;
+    this._router.navigate(['/login']);
   }
 
 }

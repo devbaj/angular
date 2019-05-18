@@ -9,13 +9,23 @@
 <body>
   <div class="container">
 
-    <div class="header"></div>
+    <div class="header">
+
+      <div *ngIf="!loggedIn">
+        <button [routerLink]="['/users']">Register</button>
+        <button [routerLink]="['/login']">Log In</button>
+      </div>
+      <div *ngIf="loggedIn">
+        <button [routerLink]="['/game']">New Game</button>
+        <button [routerLink]="['/load', userid]">Load Game</button>
+        <button (click)="logOut()">Log Out</button>
+      </div>
+
+    </div>
+
+    <app-load-games></app-load-games>
 
     <div class="main">
-
-      <button [routerLink]="['/users']">Register</button>
-      <button [routerLink]="['/login']">Log In</button>
-      <button [routerLink]="['/game']">New Game</button>
 
       <router-outlet></router-outlet>
 

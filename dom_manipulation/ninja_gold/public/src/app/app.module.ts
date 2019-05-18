@@ -10,13 +10,15 @@ import { UserRegComponent } from './user-reg/user-reg.component';
 import { LoginComponent } from './login/login.component';
 import { GamedataService } from './gamedata.service';
 import { GameLogicComponent } from './game-logic/game-logic.component';
+import { LoadGamesComponent } from './load-games/load-games.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserRegComponent,
     LoginComponent,
-    GameLogicComponent
+    GameLogicComponent,
+    LoadGamesComponent
   ],
   imports: [
     BrowserModule,

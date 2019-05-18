@@ -31,4 +31,8 @@ export class HttpService {
     return this._http.post( '/records/save' , game );
   }
 
+  getSavedGames( userid: any ) {
+    return this._http.get(`/records/load/${userid}`);
+  }
+
 }

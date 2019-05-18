@@ -36,7 +36,7 @@ export class UserRegComponent implements OnInit {
     const observable = this._httpService.addUser(this.newUser);
     observable.subscribe( data => {
       console.log( 'PUT request returned:' , data );
-      this.newUser = { username: this.username, pin: this.pin };
+      this._appComponent.setUser(data[`data`][`_id`]);
     });
 
   }

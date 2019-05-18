@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       if ( data[`message`] === 'success') {
         this._gamedataService.setUser(data[`data`][`userid`], data[`data`][`username`]);
         this._gamedataService.loggedIn = true;
+        this._appComponent.setUser(data[`data`][`userid`]);
       } else {
         this.error = 'You could not be logged in';
       }

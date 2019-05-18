@@ -27,8 +27,8 @@
   <div class="game__log">
     <p class="game__entry" *ngFor="let entry of turnHistory">
       Visited the {{entry.location}} and
-      <span *ngIf="entry.change >= 0">gained</span>
-      <span *ngIf="entry.change < 0">lost</span> {{entry.change}} gold.
+      <span *ngIf="entry.goldChange >= 0">gained</span>
+      <span *ngIf="entry.goldChange < 0">lost</span> {{entry.goldChange}} gold.
     </p>
   </div>
 

@@ -10,7 +10,8 @@ import { Injectable } from '@angular/core';
 export class GamedataService {
   userid: string;
   username: string;
-  game?: Game;
+  game?: any;
+  listOfGames: any;
   locations: object;
   loggedIn: boolean;
 
@@ -21,17 +22,17 @@ export class GamedataService {
     this.locations = {
       cave: {
         name: 'cave',
-        min: 5,
+        min: 10,
         max: 20
       },
       farm: {
         name: 'farm',
-        min: 3,
+        min: 5,
         max: 10
       },
       house: {
         name: 'house',
-        min: 0,
+        min: 2,
         max: 5
       },
       casino: {
@@ -58,7 +59,8 @@ export class GamedataService {
 
   saveGame(game: Game) {
     console.log( 'DATA SERVICE SAVE' );
-    console.log.( 'userid' , this.userid );
+    console.log( 'userid' , this.userid );
+    console.log( 'game info' , game );
     let observable = this._httpService.saveGame(game);
     observable.subscribe( data => console.log( 'saved' , data ) );
   }
@@ -68,5 +70,23 @@ export class GamedataService {
     console.log( 'GAME OVER' );
     this.saveGame(game);
   }
+
+  getSavedGames( userid: string ): any {
+    return this._httpService.getSavedGames(userid);
+  }
+
+  loadGameState(gameid: string) {
+    console.log( ' LOAD GAME STATE' , gameid);
+    for ( let game of this.listOfGames ) {
+      if ( game._id === gameid) {
+        console.log( 'found matching game', game );
+        this.game = game;
+      }
+      console.log('in checker loop');
+    }
+    console.log('THIS GAME' , this.game);
+    return this.game;
+  }
+
 }
 

@@ -2,9 +2,9 @@ export class Turn {
 
   constructor(
     public location: string,
-    public change: number
+    public goldChange: number
   ) {
     this.location = location;
-    this.change = change;
+    this.goldChange = goldChange;
   }
 }

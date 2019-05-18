@@ -1,3 +1,4 @@
+import { LoadGamesComponent } from './../load-games/load-games.component';
 import { LoginComponent } from './../login/login.component';
 import { UserRegComponent } from './../user-reg/user-reg.component';
 import { AppComponent } from './../app.component';
@@ -16,12 +17,20 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'game/:gameid',
+    component: GameLogicComponent
+  },
+  {
     path: 'game',
     component: GameLogicComponent
   },
   {
     path: 'end',
     component: AppComponent
+  },
+  {
+    path: 'load/:userid',
+    component: LoadGamesComponent
   }
 ];
 

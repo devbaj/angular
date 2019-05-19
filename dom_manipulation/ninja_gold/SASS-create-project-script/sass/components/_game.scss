@@ -1,0 +1,78 @@
+.game {
+	text-align: center;
+	width: 90%;
+
+	&__display {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-around;
+	}
+
+	&__place {
+		background: none;
+		padding: 2em;
+		border: $default-border;
+		border-radius: .5em;
+		box-shadow: $default-shadow;
+	}
+
+	&__title {
+		margin: 0;
+		font-family: $subtitle-stack;
+		font-size: 4em;
+		font-weight: bolder;
+	}
+
+	&__button {
+		background-color: $gold;
+		border: none;
+		width: 12em;
+		height: 3em;
+		border-radius: .5em;
+		font-size: 2em;
+
+		&:hover{
+			cursor: pointer;
+			background-color: $black;
+			color: $gold;
+		}
+
+		&:disabled {
+			cursor: auto;
+			background-color: $light-white;
+			color: $gray;
+		}
+	}
+
+	&__entry {
+		color: green;
+
+		&--loss {
+			color: red;
+		}
+	}
+
+	&__shadowbox {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: $black;
+		opacity: 0.2;
+		z-index: 1;
+	}
+
+	&__over {
+		position: absolute;
+		z-index: 2;
+		background: $white;
+		box-shadow: $default-shadow;
+		padding: 2em;
+		border: $default-border;
+		border-radius: .5em;
+		box-shadow: $default-shadow;
+		width: 30%;
+		top: 20%;
+		left: 35%;
+	}
+
+}

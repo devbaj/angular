@@ -1,0 +1,59 @@
+.form {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	width: 50%;
+	height: 80%;
+
+	&__wrapper {
+		padding: 2em;
+		border: $default-border;
+		max-height: 50%;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		box-shadow: $default-shadow;
+		min-width: 50%;
+	}
+
+	&__form {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		width: 80%;
+		height: 50%;
+	}
+
+	&__group {
+		display: flex;
+		flex-flow: row nowrap;
+		padding: 1em 0;
+	}
+
+	&__input {
+		margin-left: auto;
+	}
+
+	&__submit {
+		width: 50%;
+		margin: 1em auto 0 auto;
+		border: none;
+		border-radius: .5em;
+		background-color: $gray;
+		color: $black;
+
+		&:hover{
+			cursor: pointer;
+		}
+
+		&:disabled {
+			cursor: auto;
+			background-color: $light-white;
+			color: $gray;
+		}
+	}
+}

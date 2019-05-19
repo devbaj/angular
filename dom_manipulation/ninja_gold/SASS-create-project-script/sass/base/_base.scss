@@ -1,0 +1,28 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	min-height: 100%;
+	background-color: $white;
+}
+
+body {
+	height: 100%;
+}
+
+button {
+	padding: .5em;
+}
+
+app-user-reg {
+	height: 100%;
+}
+
+.container {
+	height: 100%;
+}
+
+.main {
+	height: 80%;
+}

@@ -1,0 +1,21 @@
+.header {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	background-color: $black;
+
+	&__title {
+		margin: 0;
+		font-size: 8em;
+		padding-left: .5em;
+	}
+
+	&__buttons {
+		margin-left: auto;
+		width: 25%;
+		// width: 25%;
+		display: flex;
+		justify-content: space-evenly;
+	}
+}

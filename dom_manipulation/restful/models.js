@@ -1,5 +1,6 @@
 const mongoose = require ( 'mongoose' );
 mongoose.connect ( 'mongodb://localhost/tasks' , { useNewUrlParser : true } );
+mongoose.set('useFindAndModify', false);
 
 var TaskSchema = new mongoose.Schema ( {
 	title : { type : String , required : [ true , 'A title is required' ] } ,

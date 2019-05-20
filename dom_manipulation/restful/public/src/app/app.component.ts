@@ -9,7 +9,12 @@ import { HttpService } from './http.service' ;
 export class AppComponent implements OnInit {
   title = 'MEAN';
   tasks = [];
-  oneTask: object;
+  oneTask: any;
+  newTask = {
+    title: null,
+    description: null
+  };
+  editing: boolean;
 
   constructor( private _httpService : HttpService) { }
 
@@ -20,16 +25,44 @@ export class AppComponent implements OnInit {
     let observable = this._httpService.getTasks();
     observable.subscribe( data => {
       console.log( 'component got tasks!' , data );
-      this.tasks = data.data;
+      this.tasks = data[`data`];
     } );
   }
 
   getTaskDetails(taskId) {
     let observable = this._httpService.getOneTask(taskId);
     observable.subscribe( data => {
-      console.log( `got one task, id: ${taskId}` , data.data );
-      this.oneTask = data.data;
-    })
+      console.log( `got one task, id: ${taskId}` , data[`data`] );
+      this.oneTask = data[`data`];
+    });
+  }
+
+  createTask() {
+    let observable = this._httpService.addTask(this.newTask);
+    observable.subscribe( data => console.log ('added', data) );
+  }
+
+  edit() {
+    this.editing = true;
+  }
+
+  updateOneTask() {
+    let observable = this._httpService.updateTask(this.oneTask);
+    observable.subscribe(data => {
+      console.log(data);
+      this.oneTask = data[`data`];
+      for (let task in this.tasks) {
+        if (task[`_id`] === data[`data`][`_id`]) {
+          task = data[`data`];
+        }
+      }
+    });
+  }
+
+  removeTask(taskid: string) {
+    console.log('remove', taskid);
+    let observable = this._httpService.removeTask(taskid);
+    observable.subscribe(data => console.log(data));
   }
 
 }

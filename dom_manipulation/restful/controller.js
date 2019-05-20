@@ -12,6 +12,7 @@ module.exports = {
 			res.json ( { message : 'error' , error : err } );
 		} )
 	} ,
+
 	read_one : ( req , res ) => {
 		Task.findById( req.params.id )
 		.then ( data => {
@@ -23,6 +24,7 @@ module.exports = {
 			res.json ( { message : 'error' , error : error} );
 		} )
 	} ,
+
 	write_one : ( req , res ) => {
 		Task.create ( {
 			title : req.body.title ,
@@ -38,22 +40,28 @@ module.exports = {
 			res.json ( { message : 'error' , error : err } );
 		} )
 	} ,
+
 	update : ( req , res ) => {
-		Task.findByIdAndUpdate ( req.params.id , {
+		console.log(req.params);
+		console.log(req.body);
+		Task.findByIdAndUpdate ( req.params.id , { $set: {
 			title : req.body.title ,
 			description : req.body.description ,
 			complete : req.body.completed
-		} )
+		} } )
 		.then ( data => {
-			console.log ( 'successfully updated' , data );
-			res.json ( { message : 'success' , data : data } );
+			Task.findById( req.params.id )
+			.then( data => res.json ( { message : 'success' , data : data } ) )
+			.catch( err => res.json('error' , err))
 		} )
 		.catch ( err => {
 			console.log ( 'error' , err );
 			res.json ( { message : 'error' , error: err } );
 		} )
 	} ,
+
 	destroy : ( req , res ) => {
+		console.log('delete function');
 		Task.findByIdAndDelete ( req.params.id )
 		.then ( data => {
 			console.log ( 'successfully deleted' , data );
@@ -64,4 +72,5 @@ module.exports = {
 			res.json ( { message : 'error' , error : err } );
 		} )
 	}
+
 }

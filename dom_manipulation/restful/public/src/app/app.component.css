@@ -9,5 +9,11 @@ html, body {
   flex-flow: column nowrap;
   align-items: center;
   text-align: center;
-  justify-content: space-und;
+  justify-content: space-evenly;
+}
+
+.form-group {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }

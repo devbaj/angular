@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     description: null
   };
   editing: boolean;
+  show: boolean;
 
   constructor( private _httpService : HttpService) { }
 
@@ -34,35 +35,13 @@ export class AppComponent implements OnInit {
     observable.subscribe( data => {
       console.log( `got one task, id: ${taskId}` , data[`data`] );
       this.oneTask = data[`data`];
+      this.show = true;
     });
   }
 
   createTask() {
     let observable = this._httpService.addTask(this.newTask);
     observable.subscribe( data => console.log ('added', data) );
-  }
-
-  edit() {
-    this.editing = true;
-  }
-
-  updateOneTask() {
-    let observable = this._httpService.updateTask(this.oneTask);
-    observable.subscribe(data => {
-      console.log(data);
-      this.oneTask = data[`data`];
-      for (let task in this.tasks) {
-        if (task[`_id`] === data[`data`][`_id`]) {
-          task = data[`data`];
-        }
-      }
-    });
-  }
-
-  removeTask(taskid: string) {
-    console.log('remove', taskid);
-    let observable = this._httpService.removeTask(taskid);
-    observable.subscribe(data => console.log(data));
   }
 
 }

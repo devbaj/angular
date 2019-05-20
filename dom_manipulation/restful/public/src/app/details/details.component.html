@@ -1,0 +1,35 @@
+<h3>{{oneTask.title}}</h3>
+<p>{{oneTask.description}}</p>
+<button (click)="edit()">Edit</button>
+<button (click)="removeTask(oneTask._id)">Delete</button>
+
+<div *ngIf="_parent.editing" class="edit-form">
+  <h2>Edit Task</h2>
+  <form class="form-edit" #editForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+          type="text"
+          name="oneTask.title"
+          id="editTitle"
+          class="form-control"
+          required
+          [(ngModel)]="oneTask.title"
+          #name="ngModel"
+      >
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+          type="text"
+          name="oneTask.description"
+          id="editDesc"
+          class="form-control"
+          required
+          [(ngModel)]="oneTask.description"
+          #name="ngModel"
+      >
+    </div>
+    <button (click)="updateOneTask()">Update</button>
+  </form>
+</div>

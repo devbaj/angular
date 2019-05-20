@@ -23,6 +23,20 @@
 		font-weight: bolder;
 	}
 
+	&__gold-total {
+		font-family: $subtitle-stack;
+		font-size: 3em;
+		margin-top: 1em;
+		border: 3px solid $gold;
+		background-color: $black;
+		color: $white;
+
+		&--negative {
+			background-color: red;
+			color: $white;
+		}
+	}
+
 	&__button {
 		background-color: $gold;
 		border: none;

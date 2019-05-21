@@ -1,0 +1,36 @@
+<div class="submission">
+  <p class="submission__info">Submit a cake to be rated</p>
+  <form class="form" #regForm="ngForm">
+
+    <div class="form__group">
+      <label for="name" class="form__label">Name</label>
+      <input
+          type="text"
+          minlength="3"
+          class="form__input"
+          id="baker"
+          required
+          [(ngModel)]="cake.name"
+          name="baker"
+          #name="ngModel"
+      >
+    </div>
+
+    <div class="form__group">
+      <label for="img-url" class="form__label">Image URL</label>
+      <input
+          class="form__input"
+          type="text"
+          required
+          id="image"
+          required
+          [(ngModel)]="cake.image"
+          name="image"
+          #name="ngModel"
+      >
+    </div>
+
+      <button (click)="onSubmit()">Add</button>
+
+  </form>
+</div>

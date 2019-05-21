@@ -1,0 +1,11 @@
+.root__top, .root__bottom {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  min-height: 25%;
+}
+
+app-submission {
+  min-height: 100%;
+}

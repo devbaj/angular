@@ -1,0 +1,5 @@
+<div class="details">
+  <img src="{{cake.image}}" alt="{{cake.baker}}'s cake'" style="width: 200px; height: 200px;">
+  <p>Average Rating: {{average}} stars</p>
+  <p *ngFor="let rating of cake.rating">{{rating.rating}} stars: {{rating.comment}}</p>
+</div>

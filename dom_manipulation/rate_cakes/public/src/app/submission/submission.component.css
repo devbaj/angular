@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.submission {
+  height: 100%;
+}
+
+.form__group {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__input {
+  margin-left: 10px;
+}

@@ -1,0 +1,26 @@
+<div class="directory">
+  <div class="directory__entry" *ngFor="let cake of cakes">
+    <img (click)="cakeDetails($event, cake)" src="{{cake.image}}" alt="{{cake.baker}}'s cake" style="width: 100px; height: 50px">
+    <form class="directory__form" #rateForm="ngForm">
+      <select
+            name="rating"
+            id="stars"
+            [(ngModel)]="cake.rating"
+            #name="ngModel"
+      >
+        <option value="5">5 stars</option>
+        <option value="4">4 stars</option>
+        <option value="3">3 stars</option>
+        <option value="2">2 stars</option>
+        <option value="1">1 star</option>
+      </select>
+      <input
+          type="text"
+          name="comment"
+          [(ngModel)]="cake.comment"
+          #name="ngModel"
+      >
+      <button (click)="rate(cake); rateForm.reset()">Rate!</button>
+    </form>
+  </div>
+</div>

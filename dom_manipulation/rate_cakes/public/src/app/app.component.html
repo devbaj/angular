@@ -1,0 +1,8 @@
+<h1 class="root__title">Rate My Cakes</h1>
+<div class="root__top">
+  <app-submission></app-submission>
+  <app-directory (cakeEmitter)="cakeSelected($event)"></app-directory>
+</div>
+<div class="root__bottom">
+  <app-details *ngIf="selection" [cake]="chosenCake"></app-details>
+</div>

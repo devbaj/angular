@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-  key = 'e6c2cdf246401ea36c85ef3da3a5cc0a';
+  key = ''; // you can get your own API key to place here at openweathermap.org
 
   constructor(
     private _http: HttpClient

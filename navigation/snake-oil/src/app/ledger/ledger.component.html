@@ -1,0 +1,23 @@
+<h1>Transaction Ledger</h1>
+
+<table>
+  <thead>
+    <th>Action</th>
+    <th>Amount</th>
+    <th>Value</th>
+    <th></th>
+  </thead>
+  <tr *ngFor="let entry of ledger">
+    <td>{{entry.action | titlecase}}</td>
+    <td>{{entry.amount}}</td>
+    <td>{{entry.value | number: '1.2-2'}}</td>
+    <td><button (click)="details(entry.id)">Details</button></td>
+  </tr>
+
+  <div class="oneEntry" *ngIf="detailsView">
+    <h2>Transaction Details</h2>
+    <p>Transaction #{{oneEntry.id}}</p>
+    <p>{{oneEntry.action | titlecase}} {{oneEntry.amount}} SnakeOil</p>
+  </div>
+
+</table>

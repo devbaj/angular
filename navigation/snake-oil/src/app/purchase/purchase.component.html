@@ -1,0 +1,19 @@
+<h1>Buy SnakeOil</h1>
+
+<p>Current SnakeOil value: ${{value | number: '1.2-2'}} per ounce</p>
+<p>Ounces of SnakeOil owned: {{balance}}</p>
+
+<form #purchaseForm="ngForm">
+  <input
+      type="text"
+      inputmode="numeric"
+      minlength="1"
+      maxlength="3"
+      size="3"
+      [(ngModel)]="amount"
+      name="amount"
+      #name="ngModel"
+      id="amount"
+  >
+  <button (click)="purchase()">Buy</button>
+</form>

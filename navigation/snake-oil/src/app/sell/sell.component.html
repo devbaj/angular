@@ -1,0 +1,22 @@
+<h1>Sell SnakeOil</h1>
+
+<p>Current value of SnakeOil: ${{value | number: '1.2-2'}} per ounce</p>
+<p>Ounces of SnakeOil owned: {{balance}}</p>
+
+<form #sellForm="ngForm">
+  <input
+      type="text"
+      inputmode="numeric"
+      minlength="1"
+      maxlength="3"
+      size="3"
+      id="sellAmount"
+      name="sellAmount"
+      [(ngModel)]="sellAmount"
+      #name="ngModel"
+      required
+  >
+  <button (click)="sell()" [disabled]="!positive">Sell</button>
+
+  <p *ngIf="!possible">Sorry, you do not have enough SnakeOil</p>
+</form>

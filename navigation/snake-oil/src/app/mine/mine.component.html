@@ -1,0 +1,25 @@
+<h1>Make SnakeOil</h1>
+
+<p>Here you can make SnakeOil by being the first to solve the algorithm:</p>
+
+<p>What is the {{n}}{{suffix}} number in the Fibonacci sequence?</p>
+
+<form #answerForm="ngForm">
+  <input
+      type="text"
+      inputmode="numeric"
+      minlength="1"
+      size="3"
+      id="answer"
+      required
+      [(ngModel)]="answer"
+      name="answer"
+      #name="ngModel"
+  >
+  <button (click)="mine()">Submit</button>
+
+  <p *ngIf="correct">That's right!</p>
+  <p *ngIf="incorrect">Sorry, that's wrong</p>
+
+
+</form>

@@ -1,0 +1,15 @@
+<button [routerLink]="['/home']">Home</button>
+<p>Add a new author!</p>
+<form #addForm="ngForm">
+  <p>Name</p>
+  <input
+      type="text"
+      name="author"
+      [(ngModel)]="author"
+      #name="ngModel"
+      id="author"
+      minlength="3"
+  >
+  <button (click)="add(); addForm.form.reset()">Add</button>
+  <p *ngIf="addedAuthor">{{addedAuthor.name}} was added to the database!</p>
+</form>

@@ -1,0 +1,16 @@
+<button [routerLink]="['/home']">Home</button>
+
+<p>Edit this Author</p>
+
+<form #editForm="ngForm">
+  <input
+      type="text"
+      minlength="3"
+      [(ngModel)]="author.name"
+      name="author"
+      id="author"
+  >
+  <button [routerLink]="['/home']">Cancel</button>
+  <button (click)="update()">Submit</button>
+  <p *ngIf="updated">Database Updated!</p>
+</form>

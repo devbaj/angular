@@ -9,14 +9,18 @@ import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
+import { QuotesComponent } from './quotes/quotes.component';
+import { WriteComponent } from './write/write.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    QuotesComponent,
+    WriteComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,6 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     RouterModule
-
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

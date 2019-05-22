@@ -15,7 +15,6 @@ export class HttpService {
   }
 
   add(name: string) {
-    console.log('httpservice', name);
     return this._http.post('/api/authors', {name});
   }
 
@@ -24,11 +23,23 @@ export class HttpService {
   }
 
   update(id: string, author: any) {
-    console.log('http id', id);
     return this._http.post(`/api/authors/${id}`, {author});
   }
 
   delete(id: string) {
     return this._http.delete(`/api/authors/${id}`);
+  }
+
+  addQuote(authorid: string, content: string) {
+    console.log('httpservice', content);
+    return this._http.post(`/api/authors/${authorid}/quotes`, {content});
+  }
+
+  updateQuote(quoteid: string, value: number, authorid: string) {
+    return this._http.post(`/api/authors/${authorid}/quotes/${quoteid}`, {value});
+  }
+
+  deleteQuote(quoteid: string) {
+    return this._http.delete(`/api/quotes/${quoteid}`);
   }
 }

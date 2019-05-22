@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
+import { QuotesComponent } from './quotes/quotes.component';
+import { WriteComponent } from './write/write.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: EditComponent
+  },
+  {
+    path: 'quotes/:authorid',
+    component: QuotesComponent
+  },
+  {
+    path: 'write/:authorid',
+    component: WriteComponent
   },
   {
     path: '',
